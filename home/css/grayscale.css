@@ -139,7 +139,7 @@ a:focus {
     text-align: center;
     color: #000;
     background: url(../img/Logo_login_big.png) no-repeat bottom center scroll;
-    background-color: #fff;
+    background-color: #eee;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
