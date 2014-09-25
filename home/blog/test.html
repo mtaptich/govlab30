@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<meta charset="utf-8">
+<title>Govlab!</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="../css/bootstrap.css" rel="stylesheet">
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../img/Logo_login_big.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../img/Logo_login_big.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../img/Logo_login_big.png">
+<link rel="apple-touch-icon-precomposed" href="../img/Logo_login_big.png">
+<link rel="shortcut icon" href="../img/Logo_login_big.png">
+
+<!-- Add custom CSS here -->
+<link href="../css/stylish-portfolio.css" rel="stylesheet">
+<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Lato:100|Open+Sans' rel='stylesheet' type='text/css'>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<style>
+body,  {
+  height: 100%;
+  width: 100%;
+  font-family:"Open Sans", Helvetica, Arial, sans-serif;
+}
+
+
+
+#preloader {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  z-index: 9999;
+}
+#spinner {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 50%;
+  left: 50%;
+  margin: -40px 0 0 -40px;
+  background: url(../../img/spinner.GIF) no-repeat;
+}
+header,footer{
+  background: #fffeff;
+}
+
+.viewport{
+  list-style-type: none;
+}
+
+.category{
+  background:#000;
+  color:#fff;
+  font-family:"Open Sans", Helvetica, Arial, sans-serif;
+  text-indent: 5px;
+}
+
+.caption{
+  line-height: 120%;
+}
+
+.caption h2{
+  margin-top: 5px;
+}
+
+.caption hr{
+  border-top: 1px dotted #eee;
+}
+
+.thumbnail{
+   background-color: #ffffff;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  -webkit-transition: all 0.418s;
+  -moz-transition: all 0.418s;
+  -o-transition: all 0.418s;
+  transition: all 0.418s;
+  -moz-box-shadow: 2px 2px 4px #eee;
+  -webkit-box-shadow: 2px 2px 4px #eee;
+  box-shadow: 2px 2px 4px #eee;
+  text-align: left;
+}
+
+.blog { padding: 0; }
+
+.blog a { color: #fff; }
+.blog a:hover { color: #777; }
+
+.blog .blog-details { padding: 0 20px 0 0; }
+
+.blog .blog-details h2 { 
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee; }
+
+.blog .image { 
+  height: 250px;
+  overflow: hidden;
+  border-radius: 3px 0 0 3px; }
+
+.blog .image img { 
+  width: 100%;
+  height: auto; }
+
+.blog .date {
+  top: -10px;
+  z-index: 99;
+  width: 65px;
+  right: -10px;
+  height: 65px;
+  padding: 10px;
+  position: absolute;
+  background: #ff8500;
+  border-radius: 999px; }
+
+/* Date Colors */
+.blog .date.primary { background: #428bca; }
+
+.blog .date.success { background: #5cb85c; }
+
+.blog .date.info { background: #5bc0de; }
+
+.blog .date.danger { background: #d9534f; }
+
+.blog .date.warning { background: #f0ad4e; }
+
+.blog .date .blog-date {
+  color: #fff;
+  display: block;
+  text-align: center;
+  margin-bottom: -8px; }
+
+.blog .date .blog-number {
+  color: #fff;
+  display: block;
+  font-size: 24px;
+  text-align: center; }
+
+/* Blog Post */
+.blog-post { padding: 0; }
+
+.blog-post .blog-details { 
+  padding: 20px 0 20px 20px;
+  background: #fff;
+}
+
+.blog-post .blog-details h2 { margin: 0; }
+
+.blog-post .blog-details p {
+  font-size: 16px;
+  line-height: 1.5; }
+
+.blog-post .blog-details p span.quote {
+  float: left;
+  color: #777;
+  margin: 20px;
+  width: 320px;
+  display: inline-block; }
+
+.blog-post .blog-details p span.quote.right { float: right; }
+
+.blog-post .image { 
+  background: #fff;
+  height: auto;
+  overflow: hidden;
+  border-radius: 3px 3px 0 0; }
+
+.blog-post .image img { 
+  width: 100%;
+  height: auto; }
+  
+.blog-post .blog-details .comment { margin-top: 20px; }
+  
+.blog-post .blog-sidebar { padding: 20px 20px 20px 0; }
+
+.blog-post .blog-sidebar .tags { line-height: 1.7 }
+
+.blog-post .blog-sidebar .related-blog {
+  color: #555;
+  height: 75px;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+  transition: all 0.5s ease-in-out; 
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out; 
+  -moz-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out; }
+
+.blog-post .blog-sidebar .related-blog img {
+  width: 100%;
+  height: auto;
+  -webkit-filter: grayscale(100%); }
+
+.blog-post .blog-sidebar .related-blog:hover img { -webkit-filter: grayscale(0%); }
+
+.blog-post .blog-sidebar .related-blog .details {
+  left: 5px;
+  bottom: 0;
+  margin: 0;
+  right: 5px;
+  color: #fff;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  position: absolute; }
+
+</style>
+<body>
+ <!--Page Preloading
+    <div id="preloader"><div id="spinner"></div></div>-->
+
+<!--Header-->
+<header>
+  <div class="container" >
+    <div class="logo"><img src="../img/Logo_login_small.png"/></div>
+  </div>
+</header>
+<section class="wrap">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="http://mtaptich.github.io/govlab30/home">SinkSource</a></li>
+        <li><a href="http://mtaptich.github.io/govlab30/home">blog</a></li>
+        <li class="pull-right"><a href="" class="text-muted"><i class="fa fa-refresh"></i></a></li>
+      </ol>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="well blog-post">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="image">
+                                <!--
+                                <iframe src="http://www.ghggo.com/water/info/ap" marginwidth="0" marginheight="0" scrolling="no" style="border-style: none;width: 100%; height: 500px; display:block; margin: 0 auto;" ></iframe>
+                                -->
+                                <img src="../img/blog_header.png"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="blog-details">
+                                <h2>
+                                    Rainfall in the United States
+                                    <span class="btn-group pull-right">
+                                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this explanation of water issues! #water #climate # energy" data-via="MikeTaptich">Tweet</a>
+                                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                                    </span>
+                                </h2>
+                                <p class="post-date">Mike Taptich, 18th September 2014</p>
+                                <hr />
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tristique libero et est iaculis, id placerat nisi luctus. Aenean volutpat risus non fermentum feugiat. Etiam facilisis arcu ante, sed molestie diam mollis vel. Nunc ultricies dui a augue pellentesque pellentesque. Fusce suscipit ullamcorper facilisis.
+                                    <br><br>Vestibulum commodo quis lacus vel <span class="quote right">"Donec dui diam, feugiat rhoncus vehicula ut, mollis et turpis. Donec erat tortor, tincidunt in condimentum sed, pellentesque id odio."
+                                    </span>eleifend. Donec sapien turpis, lobortis ut fringilla nec, congue vitae massa. Sed ullamcorper urna congue elit sodales feugiat ut sed nisl. Ut egestas a mauris non pharetra. Proin iaculis rutrum auctor. Cras rhoncus elementum libero et rutrum. Sed lorem lectus, mollis pellentesque sollicitudin molestie, eleifend sed augue. Ut a consequat purus. Fusce sit amet turpis est.
+                                    <br><br>Quisque ac risus nibh. Ut nisi nisi, hendrerit quis malesuada vel, laoreet quis justo. In tincidunt eget est in rhoncus. Sed non tincidunt ipsum. Curabitur commodo tempus metus ut imperdiet. Mauris nec nulla vitae diam tempus posuere sed vel neque. Morbi tellus nisl, lacinia sit amet dui ut, suscipit pharetra tellus. <br><br>Nulla in rutrum magna. Donec dui diam, feugiat rhoncus vehicula ut, mollis et turpis. Donec erat tortor, tincidunt in condimentum sed, pellentesque id odio.<span class="quote">"Donec dui diam, feugiat rhoncus vehicula ut, mollis et turpis. Donec erat tortor, tincidunt in condimentum sed, pellentesque id odio."
+                                    </span> Ut tempor ligula et suscipit aliquam. Quisque in venenatis massa. Fusce imperdiet erat ac magna aliquet aliquam. Morbi fermentum est felis. Duis ultricies, lectus at facilisis tristique, nibh diam tristique nisi, in molestie leo erat ac libero.
+                                    <br><br>Vestibulum convallis consequat ipsum, a pretium est commodo in. Cras nibh lacus, euismod ac enim id, tincidunt dapibus massa. Donec condimentum arcu in dolor faucibus, vel ultricies metus pretium. In sagittis, augue posuere sagittis vulputate, elit ante blandit magna, vitae convallis lorem magna malesuada nisl. <br><br>Praesent bibendum sit amet lectus ac cursus. Suspendisse dignissim, lectus ut accumsan eleifend, sem erat facilisis velit, et venenatis est sem sed eros. Nam volutpat vestibulum rutrum. Donec fringilla at turpis ut feugiat. Nullam vestibulum viverra dolor, eu tempus ligula ullamcorper vitae. Aliquam sit amet tellus vitae diam tempor blandit. Nunc semper quam quis sem laoreet, id tincidunt enim venenatis. <br><br>In egestas, eros in mattis pharetra, turpis lacus consectetur erat, non sagittis ipsum urna at erat. Maecenas feugiat tincidunt sodales. Proin quis dui sed sapien consectetur sagittis. Sed velit dui, ornare ultricies tortor et, volutpat consectetur lectus. Vivamus mollis turpis massa, ac dictum ante facilisis quis.
+                                </p>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 text-center">
+            <ul class="list-inline">
+              <li><a href="http://GHGgo.com/home"><i class="fa fa-mail-reply fa-3x"></i></a></li>
+              <li><a href="mailto:m.taptich@berkeley.edu"><i class="fa fa-keyboard-o fa-3x"></i></a></li>
+              <li><a href="https://twitter.com/MikeTaptich"><i class="fa fa-twitter fa-3x"></a></i></li>
+              <li><a href="http://www.linkedin.com/pub/michael-taptich/21/263/b28/"><i class="fa fa-linkedin-square fa-3x"></i></a></li>
+            </ul>
+            <div class="top-scroll">
+              <a href="#top"><i class="fa fa-circle-arrow-up scroll fa-4x"></i></a>
+            </div>
+            <hr>
+            <p>Copyright &copy; Mike Taptich 2014</p>
+          </div>
+        </div>
+      </div>
+</footer>
+
+ <script src="../js/jquery-1.10.2.js"></script>
+ <script src="../js/bootstrap.js"></script>
+ <script src="../js/smoothscroll.js"></script>
+
+
+ <!-- ============== SCRIPTS =================== -->
+ <script type="text/javascript">
+ /*Page Preloading*/
+$(window).load(function() {
+  $('#spinner').fadeOut();
+  $('#preloader').delay(300).fadeOut('slow');
+  setTimeout(function(){$('.mac-left img').addClass('fadeInLeft');},100);
+  setTimeout(function(){$('.mac-right img').addClass('fadeInRight');},100);
+  setTimeout(function(){$('.mac-left a').addClass('bounceInDown');},100);
+  setTimeout(function(){$('.mac-right a').addClass('bounceInDown');},100);
+});</script>
+
+
+</body>
+</html>
